@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  dbmysql:
+    image: mysql:5.7
+    command: --innodb-use-native-aio=0
+    container_name: dbmysql
+    restart: always
+    tty: true
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=fullcycledb
+      - MYSQL_ROOT_PASSWORD=mysecretpass
+      - MYSQL_USER=mtz
+    networks:
+      - node-network
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    depends_on:
+      - api
+    tty: true
+    container_name: nginx
+    networks:
+      - node-network
+    ports:
+      - "8080:80"
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    container_name: api
+    depends_on:
+      - dbmysql
+    networks:
+      - node-network
+    tty: true
+
+networks:
+  node-network:
+    driver: bridge

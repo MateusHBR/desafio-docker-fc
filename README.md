@@ -1,6 +1,6 @@
 # Desafio do Curso FullCycle
 
-## Desafio GOLang
+## Desafio 1. GOLang
 ```bash
 $ cd go-lang
 ```
@@ -21,3 +21,19 @@ desafio-fc-golang_app   latest      6c2f08a18214   1 minutes ago       1.84MB
 ```bash
 $ docker-compose up --build
 ```
+
+## Desafio 2. Nginx - Nodejs - Mysql
+```bash
+$ cd nginx-node-mysql
+```
+### Objetivos:
+- [x] Fazer o Nginx acessar a aplicação nodejs;
+- [x] A Aplicação node irá inserir o dado no mysql toda vez que uma requisição for feita;
+- [x] O site acessado através do Nginx deverá apresentar o nome que foi cadastrado no banco.
+ 
+### Como executar o desafio:
+```bash
+$ docker-compose up -d --build
+```
+
+O site estará acessível através da url: http://localhost:8080/

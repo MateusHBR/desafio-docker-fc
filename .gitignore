@@ -1,0 +1,6 @@
+# Ignorando o volume mysql
+mysql
+
+# Ignorando os arquivos gerados de um servidor node
+node_modules
+package-lock.json
